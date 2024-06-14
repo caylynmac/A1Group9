@@ -3,21 +3,44 @@ package shapeDomain;
 
 public abstract class Shape implements Comparable<Shape>{
 
-	private int height;
+	private double height;
+	private Double volume;
+	private Double area;
 	
-	public int getHeight() {
+	public Shape(double height) {
+		super();
+		this.height = height;
+	}
+	
+	public double getHeight() {
 		return height;
+	}
+	
+	public Double getVolume() {
+		return volume;
+	}
+	
+	public Double getArea() {
+		return area;
+	}
+	
+	public void setVolume(Double volume) {
+		this.volume = volume;
+	}
+
+	public void setArea(Double area) {
+		this.area = area;
 	}
 	
 	/**abstract area method for inheritance
 	 * 
 	 */
-	public abstract int area();
+	public abstract Double area();
 	
 	/**abstract volume method
 	 * 
 	 */
-	public abstract int volume();
+	public abstract Double volume();
 	
 	/**
 	 * Compares shapes based on their height
@@ -38,4 +61,27 @@ public abstract class Shape implements Comparable<Shape>{
 			return 0;
 		}
 	}
+		
+	/**
+	 * to compare by height, volume, or area
+	 */
+	public int typeCompare(Shape that, String input)
+	{
+		int result = -2;
+		
+		if (input.equals("h")) 
+		{
+			result = this.compareTo(that);
+		}
+		else if (input.equals("v"))
+		{
+			result = Double.compare(this.volume(), that.volume());
+		}
+		else if (input.equals("a"))
+		{
+			result =  Double.compare(this.area(), that.area());
+		}
+		return result;
+	}
+	
 }

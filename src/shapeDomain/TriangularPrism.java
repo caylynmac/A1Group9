@@ -1,10 +1,9 @@
 package shapeDomain;
 
-public class Pyramid extends Shape{
-
+public class TriangularPrism extends Shape{
 	private double edgeLength;
 	
-	public Pyramid(double h, double e) {
+	public TriangularPrism(double h, double e) {
 		super(h);
 		this.edgeLength = e;
 		
@@ -14,14 +13,13 @@ public class Pyramid extends Shape{
 	
 	@Override
 	public Double volume() {
-		Double v = (edgeLength * edgeLength * getHeight()) / 3;
+		Double v = (Math.sqrt(3/4) * edgeLength * edgeLength * getHeight());
 		return v;
 	}
 	
 	@Override
 	public Double area() {
-		Double a = (edgeLength * edgeLength);
+		Double a = (edgeLength * getHeight()) / 2;
 		return a;
 	}
-
 }
